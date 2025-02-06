@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=ERR251429_bowtie2
 #SBATCH --partition=RM-shared
-#SBATCH --ntasks=4
-#SBATCH --mem=32G  # Increased memory for sorting
+#SBATCH --ntasks=8
+#SBATCH --mem=15G  # Increased memory for sorting
 #SBATCH --time=04:00:00
 #SBATCH --output=ERR251429_bowtie2.log
 #SBATCH --mail-user=jparedes@svsu.edu
@@ -23,6 +23,9 @@ SORTED_BAM="$WORKDIR/ERR251429_sorted.bam"
 BCF_OUTPUT="$WORKDIR/ERR251429.bcf"
 VCF_OUTPUT="$WORKDIR/ERR251429.vcf"
 COMPRESSED_VCF="$WORKDIR/ERR251429.vcf.gz"
+
+echo "Indexing reference genome..."
+bowtie2-build $REFERENCE human_genome_reference
 
 echo "Running Bowtie2..."
 bowtie2 --very-fast -p 4 -x $REFERENCE -1 $READS_1 -2 $READS_2 -S $SAM_OUTPUT
