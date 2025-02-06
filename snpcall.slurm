@@ -28,10 +28,10 @@ echo "Indexing reference genome..."
 bowtie2-build $REFERENCE human_genome_reference
 
 echo "Running Bowtie2..."
-bowtie2 --very-fast -p 4 -x $REFERENCE -1 $READS_1 -2 $READS_2 -S $SAM_OUTPUT
+bowtie2 --very-fast -p 8 -x $REFERENCE -1 $READS_1 -2 $READS_2 -S $SAM_OUTPUT
 
 echo "Converting and Sorting BAM in one step..."
-samtools view -@ 4 -bS $SAM_OUTPUT | samtools sort -@ 4 -m 8G -T /scratch/tmp_sort -o $SORTED_BAM
+samtools view -@ 8 -bS $SAM_OUTPUT | samtools sort -@ 8 -m 10G -T /scratch/tmp_sort -o $SORTED_BAM
 
 echo "Indexing BAM file..."
 samtools index $SORTED_BAM
