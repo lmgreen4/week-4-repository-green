@@ -4,6 +4,7 @@
 #SBATCH --time=03:00:00               # Time limit (3 hours to be safe and if files larger that 10 Gb)
 #SBATCH --ntasks=1                    # Use 1 task
 #SBATCH --mem=2G                      # Request 2 GB of memory
+#SBATCH --partition=RM-shared          # Use the standard partition (ensure it has internet access)
 #SBATCH --mail-user=your-email@example.com  # Add your email address here
 #SBATCH --mail-type=ALL               # Send email notifications for all job states (BEGIN, END, FAIL)
 
@@ -17,4 +18,4 @@ STORAGE_DIR="/ocean/projects/agr250001p/your-username"
 cd $STORAGE_DIR
 
 # Download the dataset
-fastq-dump --split-files SRX123456    # Replace SRX123456 with an SRA accession number of your choice
+fastq-dump --split-files ERR251429    # Replace SRX123456 with an SRA accession number of your choice
