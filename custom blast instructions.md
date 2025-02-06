@@ -1,4 +1,5 @@
 ## Run
+module load sra-toolkit
 vdb-config --interactive
 
 ## BLAST Tutorial 2: Running BLAST with Custom Databases
