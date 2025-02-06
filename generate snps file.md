@@ -10,3 +10,5 @@ grep -v "^#" ERR251429.vcf | shuf -n 5 > selected_snps.txt
 Go to https://useast.ensembl.org/Tools/VEP
 
 Paste snps and adjust filters
+module loas htslib
+bgzip -c vcf > vcf.gz
